@@ -9,6 +9,7 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 	"image"
+	"image/draw"
 )
 
 //go:embed swk.jpg
@@ -47,4 +48,11 @@ func SetPic(img *canvas.Image, picData []byte) (err error) {
 	}
 	img.Refresh()
 	return nil
+}
+
+func ImageToRGBA(src image.Image) *image.RGBA {
+	bounds := src.Bounds()
+	dst := image.NewRGBA(bounds)
+	draw.Draw(dst, bounds, src, bounds.Min, draw.Src)
+	return dst
 }
