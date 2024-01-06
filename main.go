@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	_ "embed"
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
@@ -10,31 +11,28 @@ import (
 	"image"
 )
 
+//go:embed swk.jpg
 var swk []byte
+
+//go:embed zbj.png
 var zbj []byte
 
 func main() {
 	a := app.NewWithID("pintu")
-	win := a.NewWindow("PingTu")
-	msg := widget.NewLabel("")
-	entry := widget.NewEntry()
-	btn1 := widget.NewButton("swk", func() {
-
+	win := a.NewWindow("embed image browser")
+	img := canvas.NewImageFromImage(nil)
+	btnSwk := widget.NewButton("swk", func() {
+		SetPic(img, swk)
 	})
-	btn2 := widget.NewButton("zbj", func() {
-
+	btnZbj := widget.NewButton("zbj", func() {
+		SetPic(img, zbj)
 	})
-	btnRefresh := widget.NewButton("Refresh", func() {
-
-	})
-	left := canvas.NewImageFromFile("swk.jpg")
 	right := container.NewGridWithColumns(3)
 	for i := 0; i < 9; i++ {
 		right.Add(canvas.NewImageFromFile("swk.jpg"))
 	}
-	split := container.NewHSplit(left, right)
-	top := container.NewHBox(entry, btn1, btn2, btnRefresh)
-	cc := container.NewBorder(top, msg, nil, nil, split)
+	top := container.NewHBox(btnSwk, btnZbj)
+	cc := container.NewBorder(top, nil, nil, nil, img)
 	win.SetContent(cc)
 	win.SetMaster()
 	win.Resize(fyne.NewSize(800, 700))
