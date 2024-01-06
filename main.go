@@ -18,6 +18,10 @@ var swk []byte
 //go:embed zbj.png
 var zbj []byte
 
+/*
+教程来源
+https://www.bilibili.com/video/BV1zD4y167UL
+*/
 func main() {
 	a := app.NewWithID("pintu")
 	win := a.NewWindow("embed image browser")
