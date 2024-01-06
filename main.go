@@ -22,19 +22,40 @@ func main() {
 	a := app.NewWithID("pintu")
 	win := a.NewWindow("embed image browser")
 	img := canvas.NewImageFromImage(nil)
+	n := 3
+	right := container.NewGridWithColumns(n)
+	pieces := make([]fyne.CanvasObject, 9)
+	btn1 := widget.NewButton("Split", func() {
+		if img.Image == nil {
+			return
+		}
+		rgb1 := ImageToRGBA(img.Image)
+		w := rgb1.Rect.Dx() / n
+		h := rgb1.Rect.Dy() / n
+		n0 := 0
+		for i := 0; i < n; i++ {
+			for j := 0; j < n; j++ {
+				v := canvas.NewImageFromImage(rgb1.SubImage(
+					image.Rect(w*j, h*i, w*(j+1), h*(i+1))))
+				pieces[n0] = v
+				n0++
+			}
+		}
+		right.Objects = pieces
+		right.Refresh()
+	})
 	btnSwk := widget.NewButton("swk", func() {
 		SetPic(img, swk)
+		btn1.OnTapped()
 	})
 	btnZbj := widget.NewButton("zbj", func() {
 		SetPic(img, zbj)
+		btn1.OnTapped()
 	})
-	right := container.NewGridWithColumns(3)
-	for i := 0; i < 9; i++ {
-		right.Add(canvas.NewImageFromFile("swk.jpg"))
-	}
-	top := container.NewHBox(btnSwk, btnZbj)
-	cc := container.NewBorder(top, nil, nil, nil, img)
-	win.SetContent(cc)
+
+	top := container.NewHBox(btnSwk, btnZbj, btn1)
+	cc := container.NewHSplit(img, right)
+	win.SetContent(container.NewBorder(top, nil, nil, nil, cc))
 	win.SetMaster()
 	win.Resize(fyne.NewSize(800, 700))
 	win.ShowAndRun()
