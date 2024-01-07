@@ -11,7 +11,8 @@ func main() {
 	a := app.NewWithID("pintu1111")
 	win := a.NewWindow("PingTu111")
 
-	List2(win)
+	//List2(win)
+	menu(win)
 	win.Resize(fyne.NewSize(800, 700))
 	win.ShowAndRun()
 }
