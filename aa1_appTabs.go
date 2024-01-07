@@ -9,6 +9,7 @@ import (
 )
 
 /*
+https://developer.fyne.io/started/demo
 go run fyne.io/fyne/v2/cmd/fyne_demo@latest
 */
 func main() {
