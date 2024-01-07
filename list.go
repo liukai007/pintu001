@@ -14,7 +14,8 @@ func main() {
 	//List2(win)
 	//menu(win)
 	//popUpMenu(win)
-	popUp(win)
+	//popUp(win)
+	icon(win)
 	win.Resize(fyne.NewSize(800, 700))
 	win.ShowAndRun()
 }
