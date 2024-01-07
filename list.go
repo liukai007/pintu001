@@ -21,7 +21,7 @@ type person2 struct {
 	name, age string
 }
 
-func List2(w fyne.Window) {
+func list2(w fyne.Window) {
 	lblMsg := widget.NewLabel("")
 	//data := []string{"red", "blue", "yellow"}
 	data := []person2{
