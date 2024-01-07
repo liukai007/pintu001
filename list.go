@@ -34,15 +34,17 @@ func List2(w fyne.Window) {
 		},
 		func() fyne.CanvasObject {
 			//return widget.NewLabel("")
-			return container.NewHBox(widget.NewLabel(""), widget.NewLabel(""))
+			return container.NewHBox(widget.NewLabel(""), widget.NewLabel(""), widget.NewLabel(""))
 		},
 		func(lii widget.ListItemID, co fyne.CanvasObject) {
 			//lbl := co.(*widget.Label)
 			hbox := co.(*fyne.Container)
 			lblLeft := hbox.Objects[0].(*widget.Label)
 			lblRight := hbox.Objects[1].(*widget.Label)
+			lblRight1 := hbox.Objects[2].(*widget.Label)
 			lblLeft.SetText(data[lii].name)
 			lblRight.SetText(data[lii].age)
+			lblRight1.SetText(data[lii].age)
 		},
 	)
 	lst.OnSelected = func(id widget.ListItemID) {
