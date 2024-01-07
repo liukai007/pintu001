@@ -8,7 +8,7 @@ import (
 
 func menu(w fyne.Window) {
 	lblMsg := widget.NewLabel("")
-	menu := widget.NewMenu(fyne.NewMenu("File",
+	menu1 := widget.NewMenu(fyne.NewMenu("File",
 		fyne.NewMenuItem("Open", func() {
 			lblMsg.SetText("Open")
 		}),
@@ -19,7 +19,32 @@ func menu(w fyne.Window) {
 			lblMsg.SetText("Close")
 		}),
 	))
-
-	c := container.NewVBox(lblMsg, menu)
+	fileMenu := fyne.NewMenu("File",
+		fyne.NewMenuItem("Open", func() {
+			lblMsg.SetText("Open")
+		}),
+		fyne.NewMenuItem("Save", func() {
+			lblMsg.SetText("Save")
+		}),
+		fyne.NewMenuItem("Close", func() {
+			lblMsg.SetText("Close")
+		}),
+	)
+	editMenu := fyne.NewMenu("Edit",
+		fyne.NewMenuItem("Open", func() {
+			lblMsg.SetText("111")
+		}),
+		fyne.NewMenuItem("Save", func() {
+			lblMsg.SetText("Save")
+		}),
+		fyne.NewMenuItem("Close", func() {
+			lblMsg.SetText("Close")
+		}),
+	)
+	mainMenu := fyne.NewMainMenu(
+		fileMenu,
+		editMenu)
+	w.SetMainMenu(mainMenu)
+	c := container.NewVBox(lblMsg, menu1)
 	w.SetContent(c)
 }
