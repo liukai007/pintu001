@@ -8,6 +8,9 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+/*
+go run fyne.io/fyne/v2/cmd/fyne_demo@latest
+*/
 func main() {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("TabContainer Widget")
