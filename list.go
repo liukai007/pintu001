@@ -2,23 +2,23 @@ package main
 
 import (
 	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 )
 
-func main() {
-	a := app.NewWithID("pintu1111")
-	win := a.NewWindow("PingTu111")
-
-	//List2(win)
-	//menu(win)
-	//popUpMenu(win)
-	//popUp(win)
-	icon(win)
-	win.Resize(fyne.NewSize(800, 700))
-	win.ShowAndRun()
-}
+//func main() {
+//	a := app.NewWithID("pintu1111")
+//	win := a.NewWindow("PingTu111")
+//
+//	//List2(win)
+//	//menu(win)
+//	//popUpMenu(win)
+//	//popUp(win)
+//	icon(win)
+//	//set11()
+//	win.Resize(fyne.NewSize(800, 700))
+//	win.ShowAndRun()
+//}
 
 type person2 struct {
 	name, age string
