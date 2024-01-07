@@ -13,9 +13,9 @@ func main() {
 	lblMsg := widget.NewLabel("")
 	treeData := map[string][]string{
 		"":      {"color", "fruit"},
-		"color": []string{"red", "blue", "yellow"},
-		"fruit": []string{"apple", "b1", "y2"},
-		"red":   []string{"red1", "red2", "red3"},
+		"color": {"red", "blue", "yellow"},
+		"fruit": {"apple", "b1", "y2"},
+		"red":   {"red1", "red2", "red3"},
 	}
 	tree1 := widget.NewTreeWithStrings(treeData)
 	//tree1.OpenAllBranches()
